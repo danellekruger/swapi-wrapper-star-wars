@@ -1,0 +1,14 @@
+<h2>Starships</h2>
+<table border="1">
+  <tr>
+    <th>Name</th><th>Model</th><th>Manufacturer</th><th>Cost (credits)</th>
+  </tr>
+  <tr *ngFor="let s of ships">
+    <td>{{ s.name }}</td>
+    <td>{{ s.model }}</td>
+    <td>{{ s.manufacturer }}</td>
+    <td>{{ s.cost_in_credits }}</td>
+  </tr>
+</table>
+<br>
+<a routerLink="/">← Back to films</a>
