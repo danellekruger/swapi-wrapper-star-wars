@@ -1,10 +1,10 @@
 <h2>Star Wars Films</h2>
 <ul>
   <li *ngFor="let f of films">
-    <a [routerLink]="['/films', f.id, 'characters']">
-      Episode {{ f.episode_id }}: {{ f.title }}
-    </a>
-    |
-    <a [routerLink]="['/films', f.id, 'starships']">Starships</a>
+    <span>Episode {{ f.episode_id }}: {{ f.title }}</span>
+    <span class="links">
+      <a [routerLink]="['/films', f.id, 'characters']">Characters</a>
+      <a [routerLink]="['/films', f.id, 'starships']">Starships</a>
+    </span>
   </li>
 </ul>

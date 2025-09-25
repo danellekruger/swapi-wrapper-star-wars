@@ -16,6 +16,9 @@ export class FilmsListComponent implements OnInit {
   constructor(private swapi: SwapiService) {}
 
   ngOnInit(): void {
-    this.swapi.getFilms().subscribe(data => this.films = data);
+    this.swapi.getFilms().subscribe({
+      next: data => this.films = data,
+      error: err => console.error('Failed to load films', err)
+    });
   }
 }
