@@ -1,5 +1,8 @@
-<h2>Characters</h2>
-<table border="1">
+<h2 *ngIf="film">
+  Episode {{ film.episode_id }}: {{ film.title }} – Characters
+</h2>
+
+<table *ngIf="people.length">
   <tr>
     <th>Name</th><th>Height</th><th>Mass</th><th>Gender</th>
   </tr>
@@ -10,5 +13,5 @@
     <td>{{ p.gender }}</td>
   </tr>
 </table>
-<br>
+
 <a routerLink="/">← Back to films</a>

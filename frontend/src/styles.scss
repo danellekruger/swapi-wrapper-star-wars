@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+:root {
+  --star-wars-yellow: #ffe81f;
+  --space-black: #000;
+  --deep-space: #111827;
+  --accent: #22d3ee;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background: var(--space-black);
+  color: var(--star-wars-yellow);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+  &:hover { color: var(--star-wars-yellow); }
+}
+
+button {
+  background: transparent;
+  border: 2px solid var(--star-wars-yellow);
+  color: var(--star-wars-yellow);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s;
+  &:hover {
+    background: var(--star-wars-yellow);
+    color: var(--space-black);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===== HOVER & FOCUS ACCENTS ===== */
+a,                    /* links  */
+button,               /* buttons */
+tr:hover,             /* table rows (characters / starships) */
+.card:hover {         /* if you later wrap items in a card */
+  transition: all .25s ease-in-out;
+  color: #00d4ff;                    /* cyan text */
+  text-shadow: 0 0 4px #00d4ff,      /* subtle glow */
+               0 0 8px #00d4ff;
+  cursor: pointer;
+}
+
+/* keep the row readable inside the table */
+table tbody tr:hover {
+  background: rgba(0, 212, 255, 0.08); /* translucent cyan tint */
+}

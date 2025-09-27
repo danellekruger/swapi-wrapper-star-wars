@@ -34,3 +34,17 @@ async def get_starships(film_id: int):
     except Exception:
         raise HTTPException(404, "Film or starships not found")
     return [Starship(**{k: s.get(k, "n/a") for k in Starship.model_fields}) for s in ships]
+
+@router.get("/{film_id}", response_model=Film)
+async def get_film(film_id: int):
+    try:
+        data = await swapi._get(f"{swapi.BASE}/films/{film_id}")
+    except Exception:
+        raise HTTPException(404, "Film not found")
+    return Film(
+        id=film_id,
+        title=data["title"],
+        episode_id=data["episode_id"],
+        director=data["director"],
+        release_date=data["release_date"]
+    )

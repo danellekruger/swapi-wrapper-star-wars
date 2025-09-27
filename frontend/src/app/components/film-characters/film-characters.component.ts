@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { SwapiService, Person } from '../../services/swapi.service';
+import { SwapiService, Person, Film } from '../../services/swapi.service';
 
 @Component({
   selector: 'app-film-characters',
@@ -12,12 +12,13 @@ import { SwapiService, Person } from '../../services/swapi.service';
 })
 export class FilmCharactersComponent implements OnInit {
   people: Person[] = [];
-  filmId = 0;
+  film: Film | null = null;
 
   constructor(private route: ActivatedRoute, private swapi: SwapiService) {}
 
   ngOnInit(): void {
-    this.filmId = Number(this.route.snapshot.paramMap.get('id'));
-    this.swapi.getCharacters(this.filmId).subscribe(data => this.people = data);
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.swapi.getFilm(id).subscribe(f => this.film = f);
+    this.swapi.getCharacters(id).subscribe(p => this.people = p);
   }
 }

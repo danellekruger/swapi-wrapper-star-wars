@@ -28,6 +28,10 @@ export interface Starship {
 export class SwapiService {
   constructor(private http: HttpClient) {}
 
+  getFilm(id: number): Observable<Film> {
+    return this.http.get<Film>(`/api/films/${id}`);
+  }
+
   getFilms(): Observable<Film[]> {
     return this.http.get<Film[]>('/api/films');
   }
