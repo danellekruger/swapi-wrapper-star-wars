@@ -1,9 +1,0 @@
-@use '../../../../../variables' as *;
-@use '../../../../../table' as *;
-
-table { @include star-wars-table; }
-
-a {
-  display: inline-block;
-  margin-top: 1.5rem;
-}
