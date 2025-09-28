@@ -1,0 +1,40 @@
+/* Colour palette to keep with the star wars theme */
+$star-wars-yellow: #ffe81f;
+$space-black: #000;
+
+/* Display results from method in a tabluar format */
+@mixin star-wars-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  th {
+    background: $star-wars-yellow;
+    color: $space-black;
+    padding: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  td { padding: 0.6rem 0.75rem; border-bottom: 1px solid rgba($star-wars-yellow, 0.3); }
+  tr:hover { background: rgba(255, 255, 255, 0.03); }
+}
+
+/* Borders for columns and rows for each table to make output neater */
+table {
+  @include star-wars-table;
+  border: 2px solid $star-wars-yellow;
+  th, td { border: 1px solid rgba($star-wars-yellow, 0.4); }
+}
+
+/* Back button to go back to first page after method displayed */
+.back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1rem;
+  background: $star-wars-yellow;
+  color: $space-black;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  &:hover { opacity: 0.8; }
+}

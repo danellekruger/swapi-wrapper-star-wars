@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface Film {
   id: number;
@@ -33,7 +34,9 @@ export class SwapiService {
   }
 
   getFilms(): Observable<Film[]> {
-    return this.http.get<Film[]>('/api/films');
+    return this.http.get<Film[]>('/api/films').pipe(
+      map(films => films.sort((a, b) => a.episode_id - b.episode_id))
+    );
   }
 
   getCharacters(filmId: number): Observable<Person[]> {
