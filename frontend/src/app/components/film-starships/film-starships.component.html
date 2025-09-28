@@ -2,7 +2,7 @@
   Episode {{ film.episode_id }}: {{ film.title }} – Starships
 </h2>
 
-<table *ngIf="ships.length">
+<table *ngIf="ships$ | async as ships; else loading">
   <tr>
     <th>Name</th><th>Model</th><th>Manufacturer</th><th>Cost (credits)</th>
   </tr>
@@ -13,5 +13,9 @@
     <td>{{ s.cost_in_credits }}</td>
   </tr>
 </table>
+
+<ng-template #loading>
+  <p>Loading starships…</p>
+</ng-template>
 
 <a class="back" routerLink="/">← Back to films</a>

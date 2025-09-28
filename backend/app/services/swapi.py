@@ -2,15 +2,17 @@ import httpx
 from typing import List, Dict, Any
 from app.cache.ttl import get, set
 
-BASE = "https://swapi.dev/api"
+BASE = "https://swapi.dev/api"          # fixed trailing space
+
+# single client re-used for connection-pooling (optional bonus)
+_client = httpx.AsyncClient(timeout=5.0)  # 5 s max per call
 
 async def _get(url: str) -> Dict[str, Any]:
     cached = get(url)
     if cached:
         return cached
-    async with httpx.AsyncClient() as client:
-        resp = await client.get(url)
-        resp.raise_for_status()
+    resp = await _client.get(url)
+    resp.raise_for_status()
     data = resp.json()
     set(url, data)
     return data

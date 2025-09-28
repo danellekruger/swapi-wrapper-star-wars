@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SwapiService, Starship } from '../../services/swapi.service';
 import { Film } from '../../services/swapi.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-film-starships',
@@ -12,14 +13,14 @@ import { Film } from '../../services/swapi.service';
   styleUrls: ['./film-starships.component.scss']
 })
 export class FilmStarshipsComponent implements OnInit {
-  ships: Starship[] = [];
   film: Film | null = null;
+  ships$!: Observable<Starship[]>;
 
   constructor(private route: ActivatedRoute, private swapi: SwapiService) {}
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.ships$ = this.swapi.getStarships(id);
     this.swapi.getFilm(id).subscribe(f => this.film = f);
-    this.swapi.getStarships(id).subscribe(s => this.ships = s);
   }
 }

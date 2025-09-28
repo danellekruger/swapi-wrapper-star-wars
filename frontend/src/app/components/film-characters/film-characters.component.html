@@ -2,16 +2,15 @@
   Episode {{ film.episode_id }}: {{ film.title }} – Characters
 </h2>
 
-<table *ngIf="people.length">
-  <tr>
-    <th>Name</th><th>Height</th><th>Mass</th><th>Gender</th>
-  </tr>
+<table *ngIf="people$ | async as people; else loading">
+  <tr><th>Name</th><th>Height</th><th>Mass</th><th>Gender</th></tr>
   <tr *ngFor="let p of people">
-    <td>{{ p.name }}</td>
-    <td>{{ p.height }}</td>
-    <td>{{ p.mass }}</td>
-    <td>{{ p.gender }}</td>
+    <td>{{ p.name }}</td><td>{{ p.height }}</td><td>{{ p.mass }}</td><td>{{ p.gender }}</td>
   </tr>
 </table>
+
+<ng-template #loading>
+  <p>Loading characters…</p>
+</ng-template>
 
 <a class="back" routerLink="/">← Back to films</a>
