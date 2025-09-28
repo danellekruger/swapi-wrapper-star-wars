@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { SwapiService, Starship } from '../../services/swapi.service';
 import { Film } from '../../services/swapi.service';
 import { Observable } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-film-starships',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './film-starships.component.html',
   styleUrls: ['./film-starships.component.scss']
 })
