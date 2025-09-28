@@ -21,7 +21,8 @@ Live Swagger docs: [http://localhost:8000/docs](http://localhost:8000/docs) (whe
 | Frontend | **Angular 20** – standalone, SCSS |
 | HTTP Client | `httpx` (async) |
 | Caching | In-memory TTL (5 min) |
-| Language | 100 % Type-safe Pydantic models |
+| Rate-Limiting | `slowapi` (100 req/min per IP) |
+| Container | **Docker** (official image provided) |
 
 ---
 
@@ -29,40 +30,54 @@ Live Swagger docs: [http://localhost:8000/docs](http://localhost:8000/docs) (whe
 
 ### 1. Clone
 ```bash
-git clone https://github.com/YOUR_USERNAME/swapi-wrapper-star-wars.git
+git clone https://github.com/danellekruger/swapi-wrapper-star-wars.git
 cd swapi-wrapper-star-wars
 
 ---
 
-### 2. Backend setup in terminal
+### 2. Run the interface (Native Run)
 ```bash
+# Backend
 cd backend
 python -m venv venv
-venv\Scripts\activate      # For windows (differs for Linux/Mac)
+venv\Scripts\activate     # Different command on Linux/Mac
 pip install -r requirements.txt
-uvicorn app.main:app --reload # http://localhost:8000
+uvicorn app.main:app --reload
 
----
-
-### Frontend setup in new terminal
-```bash
+# Frontend (new terminal)
 cd frontend
 npm install
-ng serve -o                   # http://localhost:4200
+ng serve -o
+
+# Docker run (Bonus feature):
+cd backend
+docker build -t swapi-backend .
+docker run -p 8000:8000 swapi-backend
+
+Visit:
+API → http://localhost:8000/docs
+UI  → http://localhost:4200
+
+🛡️ Rate-Limiting (Bonus)
+100 requests / minute / IP (default)
+Headers returned:
+X-RateLimit-Limit, X-RateLimit-Remaining
+Exceeding the limit yields 429 Too Many Requests
 
 ---
 
 ### 📁 Project Layout
 swapi-wrapper-star-wars/
-├── backend/               # FastAPI
+├── backend/               # FastAPI (backend code)
 │   ├── app/
 │   │   ├── main.py
 │   │   ├── routers/films.py
 │   │   ├── services/swapi.py
 │   │   ├── cache/ttl.py
 │   │   └── models/schemas.py
+│   ├── Dockerfile
 │   └── requirements.txt
-├── frontend/              # Angular standalone
+├── frontend/              # Angular standalone (frontend code)
 │   ├── src/app/components/
 │   ├── src/app/services/swapi.service.ts
 │   └── proxy.conf.json   # dev proxy → localhost:8000
