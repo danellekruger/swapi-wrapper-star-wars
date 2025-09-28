@@ -1,9 +1,15 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 from app.models.schemas import Film, Person, Starship
 from app.services import swapi
+from app.auth import auth  
 
-router = APIRouter(prefix="/api/films", tags=["films"])
+# protect entire router
+router = APIRouter(
+    prefix="/api/films",
+    tags=["films"],
+    dependencies=[Depends(auth)] 
+)
 
 @router.get("", response_model=List[Film])
 async def get_films():
