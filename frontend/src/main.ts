@@ -9,6 +9,6 @@ import { routes } from './app/app.routes';
 bootstrapApplication(App, {
   providers: [
     provideRouter(routes),
-    importProvidersFrom(HttpClientModule) // <-- gives HttpClient everywhere
+    importProvidersFrom(HttpClientModule)
   ]
 }).catch(err => console.error(err));

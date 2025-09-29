@@ -4,7 +4,6 @@ from app.models.schemas import Film, Person, Starship
 from app.services import swapi
 from app.auth import auth  
 
-# protect entire router
 router = APIRouter(
     prefix="/api/films",
     tags=["films"],

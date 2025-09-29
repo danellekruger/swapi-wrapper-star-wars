@@ -2,7 +2,7 @@ import time
 from typing import Any, Optional
 
 _CACHE: dict[str, tuple[Any, float]] = {}
-_TTL = 5 * 60  # 5 minutes
+_TTL = 5 * 60  # 5 minutes until timeout
 
 def get(key: str) -> Optional[Any]:
     if key in _CACHE:
