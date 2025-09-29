@@ -58,24 +58,22 @@ button {
   margin: 0 auto;
 }
 
-/* ===== HOVER & FOCUS ACCENTS ===== */
-a,                    /* links  */
-button,               /* buttons */
-tr:hover,             /* table rows (characters / starships) */
-.card:hover {         /* if you later wrap items in a card */
+a,
+button,
+tr:hover,
+.card:hover {
   transition: all .25s ease-in-out;
-  color: #00d4ff;                    /* cyan text */
-  text-shadow: 0 0 4px #00d4ff,      /* subtle glow */
+  color: #00d4ff;
+  text-shadow: 0 0 4px #00d4ff,  /* Add glow to text */
                0 0 8px #00d4ff;
   cursor: pointer;
 }
 
-/* keep the row readable inside the table */
 table tbody tr:hover {
-  background: rgba(0, 212, 255, 0.08); /* translucent cyan tint */
+  background: rgba(0, 212, 255, 0.08);
 }
 
 body.auth-pending {
   filter: blur(5px);
-  pointer-events: none; /* disable clicks while blurred */
+  pointer-events: none; /* disable clicks if the user has not been authenticated */
 }

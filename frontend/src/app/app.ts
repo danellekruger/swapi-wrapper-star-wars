@@ -17,7 +17,7 @@ export class App implements OnInit {
   private doc = inject(DOCUMENT);
 
   ngOnInit(): void {
-    // pre-attach Basic header (same creds you gave curl)
+    // Credentials you need to use to login to be able to see and use endpoints
     const user = 'danelle';
     const pass = 'kruger';
     const headers = { Authorization: 'Basic ' + btoa(`${user}:${pass}`) };
