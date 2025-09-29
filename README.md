@@ -52,10 +52,8 @@ ng serve -o
 ```
 
 ### Visit (Backend and frontend needs to be active then you can visit these URLs):
-```plaintext
 API → http://localhost:8000/docs
 UI  → http://localhost:4200
-```
 
 # Docker run (Bonus feature - run in terminal):
 ```bash
@@ -107,9 +105,9 @@ Proxy: Angular dev-server forwards /api/* to FastAPI automatically.
 
 ## ⚡ Performance
 ```plaintext
-* **5-second timeout** per external call—fail-fast behaviour.  
-* **Reactive skeleton** shown while data loads (Angular async pipe).  
-* **Connection-pooling** via shared `httpx.AsyncClient`.
+► 5-second timeout** per external call—fail-fast behaviour.  
+► Reactive skeleton** shown while data loads (Angular async pipe).  
+► Connection-pooling** via shared `httpx.AsyncClient`.
 ```
 
 ## 🔴 Troubleshooting
@@ -124,6 +122,7 @@ Proxy: Angular dev-server forwards /api/* to FastAPI automatically.
 <img width="1919" height="1018" alt="Screenshot 2025-09-29 085719" src="https://github.com/user-attachments/assets/2a3380c5-abca-41a8-ba30-7efa6645ebb3" />
 <img width="1919" height="1012" alt="Screenshot 2025-09-29 085740" src="https://github.com/user-attachments/assets/f05fe1cf-f03a-46cc-b80a-8c021dc0c9e5" />
 <img width="1914" height="1026" alt="Screenshot 2025-09-29 085759" src="https://github.com/user-attachments/assets/fb7ddb4f-6450-402d-9140-ca2660bff041" />
+
 
 
 
