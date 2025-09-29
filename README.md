@@ -29,11 +29,14 @@ Live Swagger docs: [http://localhost:8000/docs](http://localhost:8000/docs) (whe
 ## 🏁 Quick Start
 
 ### 1. Clone (In terminal/command prompt)
+```bash
 git clone https://github.com/danellekruger/swapi-wrapper-star-wars.git
 cd swapi-wrapper-star-wars
+```
 
 ---
 
+```bash
 ### 2. Run the interface - Native Run (In terminal, backend and frontend in seperate terminals)
 # Backend
 cd backend
@@ -46,15 +49,18 @@ uvicorn app.main:app --reload
 cd frontend
 npm install
 ng serve -o
+```
 
-### Visit:
+### Visit (Backend and frontend needs to be active then you can visit these URLs):
 API → http://localhost:8000/docs
 UI  → http://localhost:4200
 
 # Docker run (Bonus feature - run in terminal):
+```bash
 cd backend
 docker build -t swapi-backend .
 docker run -p 8000:8000 swapi-backend
+```
 
 # Endpoint authentication (Bonus feature - )
 In order to use endpoints the user now had to enter username `danelle` / password `kruger`.  
@@ -68,6 +74,7 @@ Results if you run both the backend and frontend:
 ---
 
 ### 📁 Project Layout
+```plaintext
 swapi-wrapper-star-wars/
 ├── backend/               # FastAPI (backend code)
 │   ├── app/
@@ -83,20 +90,25 @@ swapi-wrapper-star-wars/
 │   ├── src/app/services/swapi.service.ts
 │   └── proxy.conf.json   # dev proxy → localhost:8000
 └── README.md
+```
 
 ### 🧠 Architecture Notes
+```plaintext
 Caching: simple in-memory dict with 5-minute expiry; shared across requests.
 Async: all SWAPI calls are concurrent (httpx.AsyncClient).
 Error handling: 404 returned for unknown film IDs or SWAPI outages.
 CORS: enabled for any origin (dev-friendly).
 Proxy: Angular dev-server forwards /api/* to FastAPI automatically.
+```
 
 ---
 
 ## ⚡ Performance
+```plaintext
 * **5-second timeout** per external call—fail-fast behaviour.  
 * **Reactive skeleton** shown while data loads (Angular async pipe).  
 * **Connection-pooling** via shared `httpx.AsyncClient`.
+```
 
 ---
 
@@ -104,5 +116,6 @@ Proxy: Angular dev-server forwards /api/* to FastAPI automatically.
 <img width="1919" height="1018" alt="Screenshot 2025-09-29 085719" src="https://github.com/user-attachments/assets/2a3380c5-abca-41a8-ba30-7efa6645ebb3" />
 <img width="1919" height="1012" alt="Screenshot 2025-09-29 085740" src="https://github.com/user-attachments/assets/f05fe1cf-f03a-46cc-b80a-8c021dc0c9e5" />
 <img width="1914" height="1026" alt="Screenshot 2025-09-29 085759" src="https://github.com/user-attachments/assets/fb7ddb4f-6450-402d-9140-ca2660bff041" />
+
 
 
