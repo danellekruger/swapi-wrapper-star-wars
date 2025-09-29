@@ -21,22 +21,20 @@ Live Swagger docs: [http://localhost:8000/docs](http://localhost:8000/docs) (whe
 | Frontend | **Angular 20** – standalone, SCSS |
 | HTTP Client | `httpx` (async) |
 | Caching | In-memory TTL (5 min) |
-| Rate-Limiting | `slowapi` (100 req/min per IP) |
 | Container | **Docker** (official image provided) |
+| Authentication | Endpoint authentication before user can use API |
 
 ---
 
 ## 🏁 Quick Start
 
-### 1. Clone
-```bash
+### 1. Clone (In terminal/command prompt)
 git clone https://github.com/danellekruger/swapi-wrapper-star-wars.git
 cd swapi-wrapper-star-wars
 
 ---
 
-### 2. Run the interface (Native Run)
-```bash
+### 2. Run the interface - Native Run (In terminal, backend and frontend in seperate terminals)
 # Backend
 cd backend
 python -m venv venv
@@ -49,20 +47,23 @@ cd frontend
 npm install
 ng serve -o
 
-# Docker run (Bonus feature):
+### Visit:
+API → http://localhost:8000/docs
+UI  → http://localhost:4200
+
+# Docker run (Bonus feature - run in terminal):
 cd backend
 docker build -t swapi-backend .
 docker run -p 8000:8000 swapi-backend
 
-Visit:
-API → http://localhost:8000/docs
-UI  → http://localhost:4200
+# Endpoint authentication (Bonus feature - )
+In order to use endpoints the user now had to enter username `danelle` / password `kruger`.  
+  - Test (in terminal while backend in active): `cmd /c "curl -u danelle:kruger http://localhost:8000/api/films"`  
+Results if you test the autentication:
+<img width="1351" height="223" alt="Screenshot 2025-09-29 005219" src="https://github.com/user-attachments/assets/df43b092-6186-406b-9820-39080e302fd3" />
 
-🛡️ Rate-Limiting (Bonus)
-100 requests / minute / IP (default)
-Headers returned:
-X-RateLimit-Limit, X-RateLimit-Remaining
-Exceeding the limit yields 429 Too Many Requests
+Results if you run both the backend and frontend:
+<img width="1896" height="680" alt="Screenshot 2025-09-29 005617" src="https://github.com/user-attachments/assets/0be12cd8-1b82-4796-bdf5-807db4d51c8b" />
 
 ---
 
@@ -100,4 +101,5 @@ Proxy: Angular dev-server forwards /api/* to FastAPI automatically.
 ---
 
 ## 🖊️ Layout of Project
+
 (Screenshots from web browser)
